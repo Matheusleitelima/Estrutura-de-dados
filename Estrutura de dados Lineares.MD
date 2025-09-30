@@ -33,3 +33,38 @@ struct Tarefa{
 - Exemplos: **árvores** e **grafos**.  
 - Uso comum: problemas envolvendo caminhos, conexões e tomadas de decisão, como sistemas de arquivos, mapas, redes sociais ou transporte.
 
+
+# Tipos de Estruturas de Dados – Lineares
+
+## 🔹 Vetores
+- Posições fixas.  
+- Funcionam como caixas numeradas, em que cada posição guarda um valor.  
+
+📌 **Exemplo:** tabela de notas de alunos em um sistema acadêmico.  
+Cada posição do vetor representa a nota de um aluno específico.
+
+---
+
+## 🔹 Listas
+- Estruturas flexíveis.  
+- Semelhantes a vetores, mas cada elemento aponta para o próximo, como um colar de contas.  
+
+📌 **Exemplo:** histórico de navegação em um navegador de internet, onde cada página visitada é ligada à próxima.
+
+---
+
+## 🔹 Pilhas
+- Regra: **LIFO (Last In, First Out)**.  
+- O último elemento que entra é o primeiro a sair.  
+
+📌 **Exemplo:** desfazer ações (`Ctrl + Z`).
+
+---
+
+## 🔹 Filas
+- Regra: **FIFO (First In, First Out)**.  
+- O primeiro elemento que entra é o primeiro a sair.  
+
+📌 **Exemplo:** fila de pedidos em um sistema de e-commerce.
+
+
