@@ -67,4 +67,6 @@ Cada posição do vetor representa a nota de um aluno específico.
 
 📌 **Exemplo:** fila de pedidos em um sistema de e-commerce.
 
+Tipos de estruturas de dados – não lineares
+
 
