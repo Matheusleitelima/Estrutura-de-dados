@@ -67,6 +67,49 @@ Cada posição do vetor representa a nota de um aluno específico.
 
 📌 **Exemplo:** fila de pedidos em um sistema de e-commerce.
 
-Tipos de estruturas de dados – não lineares
+# Estruturas de Dados – Não Lineares
+
+As estruturas de dados **não lineares** são aquelas em que os elementos **não estão organizados de forma sequencial**, como acontece em vetores ou listas.  
+Em vez disso, os dados podem estar em **formas hierárquicas** (árvores) ou em **conexões livres** (grafos).
+
+---
+
+## 🌳 Árvores
+- Uma **árvore** é uma estrutura em que existe um **nó raiz** (ponto inicial).  
+- Cada nó pode ter **filhos**, formando uma hierarquia.  
+- Os nós que não têm filhos são chamados de **folhas**.
+
+### Exemplo:
+Hierarquia de uma empresa:
+```
+Diretor (raiz)
+├── Gerente de Vendas (filho)
+│   ├── Vendedor 1 (folha)
+│   └── Vendedor 2 (folha)
+└── Gerente de TI (filho)
+    ├── Dev 1 (folha)
+    └── Dev 2 (folha)
+```
+
+---
+
+## 🔗 Grafos
+- Um **grafo** é uma estrutura em que os elementos (nós ou vértices) estão conectados por **arestas**.  
+- Diferente das árvores, **não há hierarquia fixa**.  
+- Os nós podem se conectar livremente entre si.
+
+### Exemplos de uso:
+- **Google Maps** → cidades como nós e estradas como conexões.  
+- **Redes sociais** → pessoas como nós e amizades como conexões.
+
+---
+
+## 📌 Diferenças principais
+| Estrutura | Organização | Exemplo |
+|-----------|-------------|---------|
+| Árvores   | Hierarquia (pai → filho) | Estrutura de pastas, organograma de empresa |
+| Grafos    | Conexões livres (sem regra fixa) | Google Maps, redes sociais |
+
+---
 
 
