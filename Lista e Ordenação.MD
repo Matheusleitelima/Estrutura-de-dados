@@ -103,3 +103,77 @@ free()	Libera a memória previamente alocada.
 Tipo	Características	Vantagens	Limitações
 Estática	Tamanho fixo e posições contíguas	Acesso rápido por índice	Não redimensionável
 Dinâmica	Usa ponteiros e cresce conforme necessário	Flexível e eficiente no uso de memória	Mais complexa de implementar
+
+📚 Listas Encadeadas em C
+
+As listas encadeadas são estruturas de dados dinâmicas compostas por nós (structs), onde cada nó armazena um valor (dado) e um ponteiro que indica o próximo elemento da lista.
+Elas permitem inserir e remover elementos de forma flexível, diferente dos vetores, que têm tamanho fixo.
+
+🥚 Analogia simples
+
+Pense em uma caça aos ovos de Páscoa 🐣:
+Cada ovo está em um lugar diferente (cozinha, quarto, sala...), mas você precisa de uma pista (ponteiro) que te leve de um ovo ao próximo.
+Assim funciona uma lista encadeada — cada elemento sabe onde está o próximo.
+
+🧩 Estrutura básica de um nó
+struct No {
+    int dado;              // Onde guardamos a informação
+    struct No* proximo;    // A seta que aponta para o próximo nó
+};
+
+➕ Inserindo em uma posição específica
+
+Para inserir um novo elemento em uma posição específica da lista, você precisa:
+
+Criar um novo nó.
+
+Percorrer a lista até a posição desejada.
+
+Ajustar os ponteiros para “encaixar” o novo nó na posição certa.
+
+🔗 Tipos de listas encadeadas
+1. Lista Encadeada Simples
+
+Cada nó aponta apenas para o próximo elemento da lista.
+
+struct No {
+    int dado;
+    struct No* proximo;
+};
+
+2. Lista Duplamente Encadeada
+
+Cada nó aponta tanto para o próximo quanto para o anterior, permitindo percorrer a lista nos dois sentidos.
+
+struct No {
+    int dado;
+    struct No* proximo;
+    struct No* anterior;
+};
+
+3. Lista Circular Simples
+
+O último nó aponta de volta para o primeiro, formando um ciclo.
+
+struct No {
+    int dado;
+    struct No* proximo; // o último aponta para o primeiro
+};
+
+4. Lista Circular Duplamente Encadeada
+
+Cada nó aponta para o próximo e o anterior, e o último nó aponta para o primeiro (e vice-versa).
+
+struct No {
+    int dado;
+    struct No* proximo;
+    struct No* anterior;
+};
+
+💡 Observações
+
+As listas encadeadas são úteis quando há muitas inserções e remoções dinâmicas.
+
+Elas consomem mais memória que um vetor, pois armazenam ponteiros.
+
+São amplamente usadas em pilhas, filas e implementações de árvores.
