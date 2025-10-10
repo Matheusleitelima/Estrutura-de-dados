@@ -177,3 +177,146 @@ As listas encadeadas são úteis quando há muitas inserções e remoções din�
 Elas consomem mais memória que um vetor, pois armazenam ponteiros.
 
 São amplamente usadas em pilhas, filas e implementações de árvores.
+
+# 🧠 Operações em Listas Encadeadas (C)
+
+Este material apresenta as principais operações realizadas em uma **lista encadeada simples** em linguagem C: **inserção**, **remoção** e **percorrimento**.
+
+---
+
+## 📦 Estrutura do Nó
+
+Cada nó da lista contém um valor (`dado`) e um ponteiro (`proximo`) que aponta para o próximo elemento.
+
+```c
+struct No {
+    int dado;
+    struct No* proximo;
+};
+```
+
+---
+
+## ➕ Inserção no Início da Lista
+
+A função abaixo insere um novo elemento **no início** da lista encadeada.
+
+```c
+void inserirNoInicio(struct No** inicio, int valor) {
+    struct No* novo = (struct No*) malloc(sizeof(struct No));
+    novo->dado = valor;
+    novo->proximo = *inicio;
+    *inicio = novo;
+}
+```
+
+🧩 **Explicação resumida:**  
+1. Aloca memória para o novo nó.  
+2. Define o valor (`dado`) e faz o novo nó apontar para o antigo início.  
+3. Atualiza o ponteiro de início para o novo nó.  
+
+---
+
+## ❌ Remoção do Início da Lista
+
+A função remove o **primeiro elemento** da lista, liberando a memória alocada.
+
+```c
+void removerDoInicio(struct No** inicio) {
+    if (*inicio != NULL) {
+        struct No* temp = *inicio;
+        *inicio = (*inicio)->proximo;
+        free(temp);
+    }
+}
+```
+
+🧩 **Explicação resumida:**  
+1. Verifica se a lista não está vazia.  
+2. Armazena o ponteiro do primeiro nó em `temp`.  
+3. Move o ponteiro `inicio` para o próximo nó.  
+4. Libera a memória do nó removido.  
+
+---
+
+## 🔁 Percorrer e Listar os Elementos
+
+A função percorre toda a lista, exibindo os valores armazenados em cada nó.
+
+```c
+void listar(struct No* inicio) {
+    struct No* atual = inicio;
+    while (atual != NULL) {
+        printf("%d\n", atual->dado);
+        atual = atual->proximo;
+    }
+}
+```
+
+🧩 **Explicação resumida:**  
+Percorre a lista do início até o final, imprimindo cada elemento até encontrar `NULL`.
+
+---
+
+## 🧩 Exemplo de Uso
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct No {
+    int dado;
+    struct No* proximo;
+};
+
+void inserirNoInicio(struct No** inicio, int valor);
+void removerDoInicio(struct No** inicio);
+void listar(struct No* inicio);
+
+int main() {
+    struct No* inicio = NULL;
+
+    inserirNoInicio(&inicio, 10);
+    inserirNoInicio(&inicio, 20);
+    inserirNoInicio(&inicio, 30);
+
+    printf("Lista atual:\n");
+    listar(inicio);
+
+    removerDoInicio(&inicio);
+    printf("\nApós remover o primeiro elemento:\n");
+    listar(inicio);
+
+    return 0;
+}
+```
+
+---
+
+## 🧾 Resultado Esperado
+
+```
+Lista atual:
+30
+20
+10
+
+Após remover o primeiro elemento:
+20
+10
+```
+
+---
+
+## 🧰 Conceitos Envolvidos
+
+- Ponteiros e alocação dinâmica (`malloc` e `free`)  
+- Estruturas (`struct`)  
+- Passagem por referência (`**inicio`)  
+- Manipulação de listas encadeadas  
+
+---
+
+📘 **Autor:** Matheus Leite  
+💡 **Tema:** Estruturas de Dados – Listas Encadeadas  
+
