@@ -320,3 +320,59 @@ Após remover o primeiro elemento:
 📘 **Autor:** Matheus Leite  
 💡 **Tema:** Estruturas de Dados – Listas Encadeadas  
 
+# Busca Linear em C
+
+A **busca linear** é um algoritmo utilizado para procurar um item em uma lista ou vetor, verificando cada elemento sequencialmente até encontrar o valor desejado.
+
+---
+
+## Exemplos Práticos
+
+### 1. Busca Linear em Vetor
+
+```c
+int buscaLinear(int lista[], int tamanho, int valor) {
+    for (int i = 0; i < tamanho; i++) {
+        if (lista[i] == valor) {
+            return i; // Retorna o índice onde encontrou o valor
+        }
+    }
+    return -1; // Retorna -1 se não encontrou
+}
+```
+
+### 2. Busca Linear em Lista Encadeada
+
+```c
+struct No {
+    int dado;
+    struct No* proximo;
+};
+
+int buscaLinearLista(struct No* inicio, int valor) {
+    int pos = 0;
+    struct No* atual = inicio;
+    while (atual != NULL) {
+        if (atual->dado == valor) {
+            return pos; // Retorna a posição onde encontrou
+        }
+        atual = atual->proximo;
+        pos++;
+    }
+    return -1; // Retorna -1 se não encontrou
+}
+```
+
+---
+
+## Vantagens e Desvantagens
+
+**Vantagem:**
+
+* Simples de implementar e entender.
+
+**Desvantagem:**
+
+* Não é eficiente para listas grandes, pois precisa percorrer todos os elementos no pior caso.
+
+
