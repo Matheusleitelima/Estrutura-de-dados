@@ -403,3 +403,77 @@ Recomendada para casos em que o **tamanho da lista varia** ou há **muitas inser
 - Vetores são ótimos para **acessos diretos e listas fixas**.  
 - Listas encadeadas são ideais para **manipulação dinâmica de dados** (crescem e reduzem facilmente).
 
+## 🔎 Busca Binária (Binary Search)
+
+A **busca binária** é um algoritmo utilizado para encontrar um elemento **em um vetor ordenado**.  
+Diferente da busca linear, que percorre todos os elementos, a busca binária **divide o vetor ao meio** a cada comparação, tornando o processo muito mais eficiente.
+
+---
+
+### ⚙️ Requisitos
+- O vetor **deve estar ordenado** (crescente ou decrescente).
+- O algoritmo trabalha com três variáveis principais:
+  - `inicio` → primeira posição do vetor  
+  - `fim` → última posição do vetor  
+  - `meio` → posição central usada na comparação
+
+---
+
+### 🧠 Lógica Passo a Passo
+1. **Calcula o meio** do vetor:  
+   `meio = (inicio + fim) / 2`
+2. **Compara o valor procurado** com o elemento da posição `meio`:
+   - Se for **igual**, encontrou o valor.
+   - Se o valor procurado for **maior**, ignora a metade esquerda e move `inicio = meio + 1`.
+   - Se o valor procurado for **menor**, ignora a metade direita e move `fim = meio - 1`.
+3. O processo se repete até:
+   - Encontrar o valor → retorna o índice.
+   - Ou `inicio > fim` → significa que o valor **não está na lista**.
+
+---
+
+### 💻 Exemplo em C
+
+```c
+int buscaBinaria(int vetor[], int tamanho, int valor) {
+    int inicio = 0, fim = tamanho - 1;
+
+    while (inicio <= fim) {
+        int meio = (inicio + fim) / 2;
+
+        if (vetor[meio] == valor)
+            return meio;  // Valor encontrado
+        else if (vetor[meio] < valor)
+            inicio = meio + 1;  // Busca na metade direita
+        else
+            fim = meio - 1;     // Busca na metade esquerda
+    }
+
+    return -1; // Valor não encontrado
+}
+🧩 Exemplo prático
+
+Vetor: [10, 20, 30, 40, 50]
+Valor procurado: 30
+
+Passo	início	fim	meio	vetor[meio]	Comparação	Ação
+1	0	4	2	30	igual	Encontrou
+
+✅ Resultado: índice 2 (terceira posição do vetor).
+
+🧮 Vantagens
+
+Muito mais rápida que a busca linear em listas grandes.
+
+O número de comparações é proporcional a log₂(n).
+
+⚠️ Atenção
+
+Somente funciona se o vetor estiver ordenado.
+
+Não é indicada para listas encadeadas, pois exige acesso direto por índice.
+
+💡 Resumo:
+A busca binária é uma técnica de “dividir e conquistar”.
+Ela corta o problema ao meio a cada passo, reduzindo o tempo de busca de forma exponencial.
+
