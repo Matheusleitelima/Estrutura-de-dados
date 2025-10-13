@@ -375,4 +375,31 @@ int buscaLinearLista(struct No* inicio, int valor) {
 
 * Não é eficiente para listas grandes, pois precisa percorrer todos os elementos no pior caso.
 
+## 🧩 Manipulação por Encadeamento x Estruturas Sequenciais
+
+### 🔹 Manipulação Sequencial
+Ideal para **acesso rápido** e **listas de tamanho conhecido**  
+💡 *Exemplo:* vetor de temperaturas de uma semana.
+
+### 🔹 Manipulação por Encadeamento
+Recomendada para casos em que o **tamanho da lista varia** ou há **muitas inserções/remoções no meio**  
+💡 *Exemplo:* sistema de filas dinâmicas, listas de tarefas e buffers.
+
+---
+
+### ⚙️ Comparativo entre Estruturas
+
+| **Operação**              | **Estrutura Sequencial (Vetor)**           | **Estrutura Encadeada (Lista)**         |
+|----------------------------|-------------------------------------------|----------------------------------------|
+| **Acesso por posição**     | Rápido                                   | Lento                                  |
+| **Inserção no meio**       | Lenta – desloca dados                    | Rápida – ajusta ponteiros              |
+| **Remoção no meio**        | Lenta – desloca dados                    | Rápida – ajusta ponteiros              |
+| **Crescimento da estrutura** | Limitado ao tamanho fixo                 | Flexível – cresce conforme uso         |
+| **Uso de memória**         | Contíguo e previsível                    | Fragmentado e dinâmico                 |
+
+---
+
+💭 **Resumo:**
+- Vetores são ótimos para **acessos diretos e listas fixas**.  
+- Listas encadeadas são ideais para **manipulação dinâmica de dados** (crescem e reduzem facilmente).
 
