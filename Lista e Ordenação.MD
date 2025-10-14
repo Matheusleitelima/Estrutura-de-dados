@@ -477,3 +477,29 @@ Não é indicada para listas encadeadas, pois exige acesso direto por índice.
 A busca binária é uma técnica de “dividir e conquistar”.
 Ela corta o problema ao meio a cada passo, reduzindo o tempo de busca de forma exponencial.
 
+
+# Implementação Recursiva e Iterativa
+
+## 🌀 Implementação Iterativa
+A implementação **iterativa** usa **laços de repetição** (`for`, `while`) para executar instruções até que uma condição de parada seja atingida.
+
+### ✅ Vantagens
+- Mais eficiente em termos de **uso de memória** (evita empilhamento de chamadas).  
+- Costuma ser **mais rápida na execução em baixo nível**.  
+- Está mais próxima da forma como o **computador executa instruções**.
+
+---
+
+## 🔁 Implementação Recursiva
+A implementação **recursiva** resolve o problema **dividindo-o em subproblemas menores**, chamando a **própria função** com novos parâmetros.  
+A cada chamada, uma nova instância da função é empilhada até que a **condição de parada** seja alcançada.
+
+### ✅ Vantagens
+- Código mais **limpo e elegante**.  
+- Ideal para problemas **naturalmente recursivos** (como árvores, grafos ou cálculo de fatorial).
+
+### ⚠️ Desvantagens
+- Pode **consumir mais memória**, pois cada chamada ocupa espaço na pilha.  
+- Pode causar **“estouro de pilha”** se não houver condição de parada ou se o número de chamadas for muito grande.
+
+
