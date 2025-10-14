@@ -502,4 +502,62 @@ A cada chamada, uma nova instância da função é empilhada até que a **condi�
 - Pode **consumir mais memória**, pois cada chamada ocupa espaço na pilha.  
 - Pode causar **“estouro de pilha”** se não houver condição de parada ou se o número de chamadas for muito grande.
 
+# 🔍 Busca Sequencial x Busca Binária
+
+## ⚙️ Busca Sequencial
+A **busca sequencial** percorre a lista **um a um**, verificando cada elemento até encontrar o valor desejado.
+
+### 🧩 Exemplo prático em C
+```c
+int buscaSequencial(int vetor[], int tamanho, int valor) {
+    for (int i = 0; i < tamanho; i++) {
+        if (vetor[i] == valor) {
+            return i;
+        }
+    }
+    return -1; // valor não encontrado
+}
+✅ Características
+Não exige que os dados estejam ordenados.
+
+Simples de implementar e entender.
+
+Funciona em qualquer estrutura linear (vetores ou listas).
+
+⚙️ Busca Binária
+A busca binária é um método mais eficiente, que divide o vetor ao meio a cada passo, eliminando metade dos elementos que não podem conter o valor procurado.
+
+⚠️ Importante: Os dados precisam estar ordenados para que a busca binária funcione corretamente.
+
+🧩 Exemplo prático em C
+c
+Copiar código
+int buscaBinaria(int vetor[], int tamanho, int valor) {
+    int inicio = 0, fim = tamanho - 1;
+
+    while (inicio <= fim) {
+        int meio = (inicio + fim) / 2;
+
+        if (vetor[meio] == valor)
+            return meio;
+        else if (vetor[meio] < valor)
+            inicio = meio + 1;
+        else
+            fim = meio - 1;
+    }
+    return -1; // valor não encontrado
+}
+⚖️ Comparativo entre Busca Sequencial e Busca Binária
+Critério	Busca Sequencial	Busca Binária
+Dados precisam estar ordenados?	❌ Não	✅ Sim
+Facilidade de implementação	Muito fácil	Um pouco mais complexa
+Desempenho em listas pequenas	Suficiente	Muito bom
+Desempenho em listas grandes	Lento	Rápido
+Aplicável a listas encadeadas	✅ Sim	⚠️ Não é ideal
+
+💡 Conclusão
+Use busca sequencial quando os dados não estão ordenados ou o conjunto é pequeno.
+
+Use busca binária quando os dados estão ordenados e o conjunto é grande, pois ela é muito mais eficiente.
+
 
