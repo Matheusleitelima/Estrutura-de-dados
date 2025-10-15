@@ -560,4 +560,129 @@ Use busca sequencial quando os dados não estão ordenados ou o conjunto é pequ
 
 Use busca binária quando os dados estão ordenados e o conjunto é grande, pois ela é muito mais eficiente.
 
+Métodos de Ordenação
+
+Os métodos de ordenação são algoritmos utilizados para organizar dados em uma sequência específica — geralmente em ordem crescente ou decrescente.
+
+Os três métodos a seguir são bastante conhecidos por sua simplicidade de implementação, embora não sejam os mais eficientes para grandes volumes de dados.
+
+🫧 Bubble Sort (Ordenação por Bolha)
+
+O Bubble Sort compara pares de elementos adjacentes e os troca de posição caso estejam fora de ordem.
+Esse processo é repetido até que todos os elementos estejam organizados.
+
+📚 Exemplo prático:
+Imagine que você está organizando livros em uma estante por ordem de título.
+Com o método Bubble Sort, você compara dois livros por vez e os troca de lugar se estiverem na ordem errada.
+
+📥 Insertion Sort (Ordenação por Inserção)
+
+O Insertion Sort constrói a ordenação final um elemento por vez, inserindo cada novo elemento na posição correta em relação aos anteriores.
+
+É parecido com a forma como organizamos cartas de baralho: pegamos uma carta e a colocamos no lugar certo na mão.
+
+🔎 Selection Sort (Ordenação por Seleção)
+
+O Selection Sort encontra o menor elemento do conjunto e o coloca na primeira posição.
+Depois, repete o processo para o restante da lista até que todos estejam ordenados.
+
+🔄 Função auxiliar de troca
+
+Esses métodos costumam usar uma função de troca para facilitar a inversão de valores entre duas posições no vetor.
+
+Sintaxe:
+void trocar(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}🧩 Métodos de Ordenação em C
+
+Os métodos de ordenação são algoritmos usados para organizar elementos de um vetor em ordem crescente ou decrescente.
+Abaixo estão três dos algoritmos mais conhecidos: Bubble Sort, Insertion Sort e Selection Sort.
+Eles são simples de implementar e ideais para fins educacionais.
+
+🫧 Bubble Sort — Ordenação por Bolha
+🔍 Como funciona o Bubble Sort?
+
+O algoritmo percorre várias vezes o vetor de elementos.
+Em cada passagem, ele compara dois elementos vizinhos e, se o da esquerda for maior que o da direita, eles são trocados.
+O maior valor vai "subindo" até o fim da lista, como uma bolha.
+
+💻 Sintaxe:
+void trocar(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void bubbleSort(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho - 1; i++) {
+        for (int j = 0; j < tamanho - 1 - i; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                trocar(&vetor[j], &vetor[j + 1]);
+            }
+        }
+    }
+}
+
+📥 Insertion Sort — Ordenação por Inserção
+🔍 Como funciona o Insertion Sort?
+
+O algoritmo percorre o vetor da esquerda para a direita.
+A cada passo, ele seleciona um elemento e o compara com os anteriores, movendo-os uma posição à frente até encontrar a posição correta para inseri-lo.
+
+💻 Sintaxe:
+void insertionSort(int vetor[], int tamanho) {
+    for (int i = 1; i < tamanho; i++) {
+        int chave = vetor[i];
+        int j = i - 1;
+
+        // Move os elementos maiores que a chave uma posição à frente
+        while (j >= 0 && vetor[j] > chave) {
+            vetor[j + 1] = vetor[j];
+            j--;
+        }
+
+        vetor[j + 1] = chave;
+    }
+}
+
+🔎 Selection Sort — Ordenação por Seleção
+🔍 Como funciona o Selection Sort?
+
+O algoritmo percorre o vetor e, a cada passo:
+
+Encontra o menor valor entre os elementos restantes.
+
+Troca esse valor com o primeiro elemento da parte ainda não ordenada.
+
+Esse processo é repetido até que todos os elementos estejam organizados.
+Diferente do Bubble Sort, o número de trocas é menor, pois ocorre apenas uma troca por passagem.
+
+💻 Sintaxe:
+void trocar(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void selectionSort(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho - 1; i++) {
+        int indiceMenor = i;
+        for (int j = i + 1; j < tamanho; j++) {
+            if (vetor[j] < vetor[indiceMenor]) {
+                indiceMenor = j;
+            }
+        }
+        if (indiceMenor != i) {
+            trocar(&vetor[i], &vetor[indiceMenor]);
+        }
+    }
+}
+
+✅ Observação
+
+Esses três métodos são ótimos para compreender a lógica da ordenação, mas ineficientes para grandes volumes de dados.
+Em situações reais que exigem desempenho, costuma-se usar algoritmos mais rápidos como Quick Sort ou Merge Sort.
+
 
