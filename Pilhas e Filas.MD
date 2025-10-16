@@ -71,4 +71,108 @@ Elemento espiar(Fila *f) {
     return f->itens[f->inicio];         // Retorna o elemento da frente
 }
 
+# Declaração, Implementação e Uso da Fila
+
+## Criando uma Fila
+
+### Estrutura de Dados do Elemento
+
+```c
+typedef struct {
+    char nome[30];
+    int idade;
+} Pessoa;
+Estrutura da Fila
+c
+Copiar código
+#define MAX 5
+
+typedef struct {
+    Pessoa itens[MAX];
+    int inicio;
+    int fim;
+    int total;
+} Fila;
+A estrutura da fila contém:
+
+itens → array fixo que armazena os elementos.
+
+inicio → posição do primeiro elemento da fila.
+
+fim → posição onde o próximo elemento será inserido.
+
+total → quantidade de elementos atualmente na fila.
+
+Inicializar a Fila
+c
+Copiar código
+void inicializarFila(Fila *f) {
+    f->inicio = 0;
+    f->fim = 0;
+    f->total = 0;
+}
+Inicializa a fila definindo todos os índices e o total de elementos como zero.
+
+Verificar Fila Cheia e/ou Vazia
+c
+Copiar código
+int filaCheia(Fila *f) {
+    return f->total == MAX;
+}
+
+int filaVazia(Fila *f) {
+    return f->total == 0;
+}
+Essas funções ajudam a controlar o estado da fila, evitando erros durante inserções e remoções.
+
+Inserir (Enqueue) e Remover (Dequeue)
+Inserir
+c
+Copiar código
+void inserir(Fila *f, Pessoa p) {
+    if (f->total == MAX) {
+        printf("Fila cheia. Não é possível inserir.\n");
+        return;
+    }
+ 
+    f->itens[f->fim] = p;
+    f->fim = (f->fim + 1) % MAX;
+    f->total++;
+}
+Adiciona um novo elemento ao final da fila, respeitando a lógica circular.
+
+Remover
+c
+Copiar código
+void remover(Fila *f, Pessoa *p) {
+    if (filaVazia(f)) {
+        printf("Fila vazia. Não é possível remover.\n");
+        return;
+    }
+
+    *p = f->itens[f->inicio];             
+    f->inicio = (f->inicio + 1) % MAX;     
+    f->total--;                        
+}
+Remove o primeiro elemento da fila, atualizando o início de forma circular.
+
+Mostrar Fila
+c
+Copiar código
+void mostrarFila(Fila *f) {
+    printf("Fila: ");
+    for (int i = 0, idx = f->inicio; i < f->total; i++, idx = (idx + 1) % MAX) {
+        printf("[%s, %d] ", f->itens[idx].nome, f->itens[idx].idade);
+    }
+    printf("\n");
+}
+Exibe todos os elementos da fila na ordem atual, facilitando a visualização e a depuração de erros.
+
+Conclusão
+Compreender como declarar, inicializar e manipular filas é essencial para manter a organização sequencial dos dados.
+Os conceitos de fila cheia, vazia, inserção e remoção formam a base do seu funcionamento.
+
+Mostrar a fila no console ajuda a entender visualmente o comportamento da estrutura e identificar possíveis erros.
+Além disso, o uso de estruturas bem definidas e funções organizadas favorece o reuso e a escalabilidade em projetos, sejam eles simples ou complexos.
+
 
