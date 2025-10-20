@@ -176,3 +176,132 @@ Mostrar a fila no console ajuda a entender visualmente o comportamento da estrut
 Além disso, o uso de estruturas bem definidas e funções organizadas favorece o reuso e a escalabilidade em projetos, sejam eles simples ou complexos.
 
 
+# Introdução a Pilhas
+
+## Conceito
+Uma **pilha** é uma estrutura de dados que segue o princípio **LIFO (Last In, First Out)** — ou seja, o **último a entrar é o primeiro a sair**.  
+Ela é amplamente utilizada em manipulação de dados, execução reversa e controle de chamadas.
+
+## Características
+- Acesso restrito: apenas o elemento do topo pode ser acessado, inserido ou removido.  
+- Organização linear: os elementos são empilhados um sobre o outro.  
+- Operações principais:
+  - **push** → insere um elemento no topo da pilha.  
+  - **pop** → remove o elemento do topo.  
+  - **peek/top** → visualiza o elemento do topo sem removê-lo.
+
+## Aplicações Comuns
+
+### 1. Páginas Web
+Em navegadores, as pilhas são usadas para controlar o histórico de navegação — a página mais recente é a primeira a ser removida ao pressionar "voltar".
+
+### 2. Parsing
+Os **algoritmos de parsing** analisam e estruturam dados de entrada, verificando sua sintaxe e convertendo-os para um formato compreensível.  
+O **parsing** usa uma **pilha** para organizar *tokens* em ordem hierárquica, auxiliando na análise sintática de **expressões** e **linguagens de programação**.
+
+### 3. Backtracking
+A pilha é utilizada para **armazenar estados anteriores**, permitindo **retornar e tentar alternativas** em problemas recursivos.  
+O **backtracking** é muito usado em softwares que permitem **desfazer ações** em sequência (como editores de texto e sistemas de controle de versão).
+
+---
+
+📘 **Resumo:**  
+As pilhas são fundamentais na computação por sua simplicidade e eficiência em problemas que exigem controle reverso, como análise de expressões, histórico de ações e chamadas de função.
+
+# Operações Essenciais em Pilhas
+
+As **pilhas** são estruturas de dados lineares que seguem a lógica **LIFO (Last In, First Out)** — o **último elemento a entrar é o primeiro a sair**.  
+Elas são amplamente utilizadas para controle de chamadas, desfazer ações, parsing de expressões e muitas outras aplicações.
+
+---
+
+## 🧩 Operações Fundamentais
+
+### 1. Inserir (`push`)
+
+A operação **push** insere um novo elemento no topo da pilha.  
+Antes de inserir, é importante verificar se a pilha **não está cheia**.
+
+```c
+void push(Pilha *p, Elemento e) {
+    if (pilhaCheia(p)) {
+        printf("Erro: pilha cheia. Não é possível inserir.\n");
+        return;
+    }
+
+    p->topo++;              // Avança o topo
+    p->itens[p->topo] = e;  // Insere o novo elemento
+}
+📘 Resumo:
+O topo da pilha é incrementado e o novo elemento é colocado nessa posição.
+
+2. Remover (pop)
+A operação pop remove o elemento do topo da pilha.
+Antes de remover, é necessário verificar se a pilha não está vazia.
+
+c
+Copiar código
+void pop(Pilha *p, Elemento *e) {
+    if (pilhaVazia(p)) {
+        printf("Erro: pilha vazia. Não há elementos para remover.\n");
+        e->valor = -1;  // Valor padrão para indicar falha
+        return;
+    }
+
+    *e = p->itens[p->topo];  // Copia o valor do topo
+    p->topo--;               // Decrementa o topo
+}
+📘 Resumo:
+O elemento do topo é removido e o índice do topo é decrementado.
+
+3. Consultar (peek)
+A operação peek permite visualizar o elemento que está no topo da pilha sem removê-lo.
+
+c
+Copiar código
+void peek(Pilha *p, Elemento *e) {
+    if (pilhaVazia(p)) {
+        printf("Erro: pilha vazia. Não há elementos no topo.\n");
+        e->valor = -1;  // Valor padrão para indicar erro
+        return;
+    }
+
+    *e = p->itens[p->topo];  // Copia o elemento do topo sem alterar a pilha
+}
+📘 Resumo:
+Usada para consultar o topo sem alterar a estrutura.
+
+4. Liberar (free)
+A operação free é responsável por esvaziar ou liberar a memória da pilha.
+Existem duas abordagens: array fixo e array dinâmico.
+
+🧱 Pilha com Array Fixo
+Reinicia o topo, tornando a pilha vazia novamente.
+
+c
+Copiar código
+void liberarPilha(Pilha *p) {
+    p->topo = -1;  // Define a pilha como vazia novamente
+}
+⚙️ Pilha com Alocação Dinâmica
+Libera todos os nós alocados na memória dinamicamente.
+
+c
+Copiar código
+void liberarPilha(Pilha *p) {
+    while (p->topo != NULL) {
+        No *remover = p->topo;
+        p->topo = p->topo->prox;
+        free(remover);  // Libera a memória alocada
+    }
+}
+📘 Resumo:
+
+No array fixo, apenas o índice é resetado.
+
+Na pilha dinâmica, cada nó é removido e a memória liberada com free().
+
+💡 Conclusão
+Essas quatro operações — push, pop, peek e free — formam a base do funcionamento de qualquer pilha.
+Com elas, é possível armazenar, acessar, remover e limpar elementos de forma organizada e eficiente.
+
