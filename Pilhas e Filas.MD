@@ -305,3 +305,96 @@ Na pilha dinâmica, cada nó é removido e a memória liberada com free().
 Essas quatro operações — push, pop, peek e free — formam a base do funcionamento de qualquer pilha.
 Com elas, é possível armazenar, acessar, remover e limpar elementos de forma organizada e eficiente.
 
+
+# Comunicação e Integração entre Fila e Pilha em C
+
+Este projeto demonstra o uso conjunto das estruturas de dados **Fila (FIFO)** e **Pilha (LIFO)** em linguagem C, aplicando conceitos práticos de manipulação e integração entre elas.
+
+---
+
+## 📘 Conceitos Envolvidos
+
+- **Fila (FIFO – First In, First Out):**  
+  Os primeiros elementos inseridos são os primeiros a serem removidos.
+
+- **Pilha (LIFO – Last In, First Out):**  
+  Os últimos elementos inseridos são os primeiros a serem removidos.
+
+Essas duas estruturas podem ser combinadas para realizar tarefas como filtragem de dados ou inversão de ordem, aproveitando as propriedades de cada uma.
+
+---
+
+## 🧩 Exemplo 1 — Filtragem com Fila e Pilha
+
+No primeiro exemplo, a fila armazena uma lista de pessoas, e a pilha é utilizada para **separar apenas aquelas com idade superior a 60 anos**.
+
+### 🔹 Lógica:
+1. Inserir todas as pessoas na fila.  
+2. Remover cada pessoa da fila e verificar a idade.  
+3. Se a idade for maior que 60, inserir na pilha de prioridade.  
+4. Exibir os elementos da pilha (pessoas prioritárias).
+
+### 🧠 Resultado:
+A pilha conterá apenas as pessoas com prioridade, preservando a lógica **LIFO**, ou seja, o último idoso identificado será exibido primeiro.
+
+---
+
+## 🔄 Exemplo 2 — Reversão de Ordem de uma Fila
+
+No segundo exemplo, é realizada uma **inversão total da ordem dos elementos de uma fila**, utilizando uma pilha auxiliar.
+
+### 🔹 Lógica:
+1. Inserir todas as pessoas na fila original.  
+2. Remover cada pessoa da fila e empilhar (PUSH) na pilha auxiliar.  
+3. Desempilhar (POP) cada pessoa da pilha e inserir em uma nova fila.  
+
+Dessa forma, a **fila invertida** apresenta os elementos em ordem contrária à original.
+
+### 🧠 Resultado:
+A primeira pessoa da fila original se torna a última na fila invertida.
+
+---
+
+## 🧾 Estruturas Utilizadas
+
+```c
+typedef struct {
+    char nome[30];
+    int idade;
+} Pessoa;
+
+typedef struct {
+    Pessoa dados[MAX];
+    int inicio, fim;
+} Fila;
+
+typedef struct {
+    Pessoa dados[MAX];
+    int topo;
+} Pilha;
+
+| Função                           | Descrição                           |
+| -------------------------------- | ----------------------------------- |
+| `inicializarFila()`              | Define os índices iniciais da fila  |
+| `inicializarPilha()`             | Define o topo da pilha como vazio   |
+| `inserir()`                      | Insere um elemento na fila          |
+| `remover()`                      | Remove o primeiro elemento da fila  |
+| `push()`                         | Insere um elemento no topo da pilha |
+| `pop()`                          | Remove o elemento do topo da pilha  |
+| `exibirFila()` / `exibirPilha()` | Mostra o conteúdo das estruturas    |
+
+🧠 Conclusão
+
+Este projeto ilustra de forma prática como estruturas de dados podem trabalhar juntas para resolver problemas específicos:
+
+A fila organiza os elementos de forma sequencial.
+
+A pilha permite operações de reversão e seleção.
+
+A integração entre ambas é útil em diversos contextos, como:
+
+Filtragem de dados;
+
+Processamento de prioridades;
+
+Inversão de ordem de execução.
